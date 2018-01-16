@@ -5,8 +5,22 @@
 </head>
 <body>
 <h1>Projects</h1>
-<h2>The first project</h2>
-
+<h2>Project #1: Build a breadboard power supply</h2>
+<p>The first project, as described in some detail in the first class, is to build a power supply with the following characteristics:</p>
+<ul>
+	<li>It consists of a PCB that plugs directly in a breadboard</li>
+	<li>It accepts power from a 2.1 x 5.5 mm plug from a 12 V wall adapter</li>
+	<li>It emits 12 V, 5 V, and 3.3 V (at the same time).</li>
+</ul>
+<p><b>Due date (for PCB submission): January 30, 10:30 AM</b></p>
+<p>When your design is ready, you should <a href="https://oshpark.com/">submit it to the fabricator</a>, OSH Park. It will cost you around $10. After you submit it, forward your order confirmation to brandon.stafford@tufts.edu. That will serve as proof that you submitted your project on time.</p>
+<h3>More details for project #1</h3>
+<p>First of all, we're not trying to build anything revolutionary in this project. None of you have ever made a PCB before, so the point is to make something fairly simple to get comfortable with the process. (If you search Amazon for "breadboard power supply", you'll see that you can buy various versions of things like this, though none with the 12 V passthrough, so far as I'm aware.)</p>
+<p>The image below shows the rough mechanical constraints for the PCB. You can make a board of whatever dimensions you want, but it needs to plug into the breadboard, hence the pin location dimensions.</p>
+<p><img src="img/breadboard-supply-mechanical-design.png"></p>
+<p>In the first class, I'll hand out all the <a href="components.html">components</a> you'll need to build a prototype of your power supply on a breadboard. You can then reuse the components on your PCB.</p>
+<p>To improve heat dissipation, you will want to use your PCB as a heatsink for the regulators. Dominic has made a <a href="to-220-horizontal-footprint.kicad_mod">KiCAD PCB footprint for the TO-220 package</a> to help with that.</p>
+<p><b>Note that the pins on the LM7805 and the LM1117 regulators are not in the same order!</b></p>
 <footer><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</footer>
 </body>
 </html>
