@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/tufte.css"/>
+</head>
+<body>
+<h1>Designing printed circuit boards</h1>
+<h2>PCB manufacturing process</h2>
+<p><img src="img/pcb-fabrication-layers.jpg"></p>
+<h2>Learning Kicad</h2>
+<p>Here's a rough summary of how to use Kicad.</p>
+<ol>
+	<li>(If you're using a laptop with a trackpad, plug in a real mouse.)</li>
+	<li>Make a new project.</li>
+	<li>Add components to the schematic file.</li>
+	<li>Connect the components together in the schematic.</li>
+	<li>Associate a footprint with each component.</li>
+	<li>Generate a netlist from the schematic.</li>
+	<li>Read the netlist into the PCB file.</li>
+	<li>Make a mechanical outline of the PCB on the Edge.Cuts layer.</li>
+	<li>Roughly arrange the parts the way you want them.</li>
+	<li>Place mechanically critical components.</li>
+	<li>Place the rest of the components and route traces between everything.</li>
+	<li>Run a design rule check (DRC).</li>
+	<li>Repeat cycle: schematic/footprints -> gen. netlist -> read netlist -> tweak layout -> run DRC</li>
+    <li>Submit .kicad_pcb file to OSH Park (or possibly generate Gerber files for another manufacturer).</li>
+</ol>
+<h3>Tutorials</h3>
+<ul>
+	<li><a href="https://www.youtube.com/watch?v=PlDOnSHkX2c">Chris Gammell's video tutorial on Youtube</a></li>
+  <li><a href="http://babryce.com/kicad/tutorial.html">Brian Bryce's written tutorial</a></li>
+</ul>
+<footer><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</footer>
+</body>
+</html>
