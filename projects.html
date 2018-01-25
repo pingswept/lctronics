@@ -19,7 +19,8 @@
 <p>The image below shows the rough mechanical constraints for the PCB. You can make a board of whatever dimensions you want, but it needs to plug into the breadboard, hence the pin location dimensions.</p>
 <p><img src="img/breadboard-supply-mechanical-design.png"></p>
 <p>In the first class, I'll hand out all the <a href="components.html">components</a> you'll need to build a prototype of your power supply on a breadboard. You can then reuse the components on your PCB.</p>
-<p>To improve heat dissipation, you will want to use your PCB as a heatsink for the regulators. Dominic has made a <a href="to-220-horizontal-footprint.kicad_mod">KiCAD PCB footprint for the TO-220 package</a> to help with that.</p>
+<p>To improve heat dissipation, you will want to use your PCB as a heatsink for the regulators. Dominic has made a <a href="to-220-horizontal-footprint.kicad_mod">KiCAD PCB footprint for the TO-220 package</a> to help with that. You should put it into a folder called some-name.pretty. (The ending .pretty is what matters.)</p>
+<p>Put that folder in C:\Program Files\KiCad\share\kicad\modules on Windows or /Library/Application Support/kicad/modules on MacOS. Then, you can add that library to Kicad using Preferences > Footprint Libraries in the footprint association window.</p>
 <p><b>Note that the pins on the LM7805 and the LM1117 regulators are not in the same order!</b></p>
 <footer><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</footer>
 </body>
