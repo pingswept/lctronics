@@ -5,6 +5,27 @@
 </head>
 <body>
 <h1>Projects</h1>
+<h2>Project #2: Build a DC motor controller run by a microcontroller</h2>
+<p>Your task, as described in some detail in class, is to build a DC motor controller with the following characteristics:</p>
+<ul>
+	<li>It consists of a PCB that connects to a microcontroller (say, an Arduino)</li>
+	<li>It accepts power from a 2.1 x 5.5 mm plug from a 12 V wall adapter</li>
+	<li>It has a power LED that lights up when motor power is available</li>
+	<li>It can make a DC motor spin in both directions.</li>
+	<li>It can deliver 5 amps continuously. (This means extra wide traces in some places, and note that the Arduino Vin pin can only handle around 1 A, so drawing power through the Arduino won't work.)</li>
+</ul>
+<p><b>Due date (for PCB submission): Tuesday, February 20, 10:30 AM</b></p>
+<p>When your design is ready, you should <a href="https://oshpark.com/">submit it to the fabricator</a>, OSH Park. It will cost you around $10. After you submit it, forward your order confirmation to brandon.stafford@tufts.edu. That will serve as proof that you submitted your project on time.</p>
+<h3>More details for project #2</h3>
+<p>If you want, you can try something more ambitious than what is described above. Upgrades that you might consider include:</p>
+<ul>
+	<li>Adding LEDs that show which gates are active</li>
+	<li>Adding a microcontroller onboard that can provide some level of smart behavior, like speed control or shoot-through prevention</li>
+	<li>Using an integrated chip of your own selection rather than discrete MOSFETs</li>
+	<li>Using surface-mount components (cool idea, but not for the power/motor connectors)</li>
+	<li>Adding a low-current mode, where motor current can be supplied through the Arduino</li>
+</ul>
+<p>One other note: the green screw terminals that I offered you for the first project can handle 5 amps, so that would be a good choice for the motor connector.</p>
 <h2>Project #1: Build a breadboard power supply</h2>
 <p>The first project, as described in some detail in the first class, is to build a power supply with the following characteristics:</p>
 <ul>
@@ -12,7 +33,7 @@
 	<li>It accepts power from a 2.1 x 5.5 mm plug from a 12 V wall adapter</li>
 	<li>It emits 12 V, 5 V, and 3.3 V (at the same time).</li>
 </ul>
-<p><b>Due date (for PCB submission): January 30, 10:30 AM</b></p>
+<p><b>Due date (for PCB submission): Tuesday, January 30, 10:30 AM</b></p>
 <p>When your design is ready, you should <a href="https://oshpark.com/">submit it to the fabricator</a>, OSH Park. It will cost you around $10. After you submit it, forward your order confirmation to brandon.stafford@tufts.edu. That will serve as proof that you submitted your project on time.</p>
 <h3>More details for project #1</h3>
 <p>First of all, we're not trying to build anything revolutionary in this project. None of you have ever made a PCB before, so the point is to make something fairly simple to get comfortable with the process. (If you search Amazon for "breadboard power supply", you'll see that you can buy various versions of things like this, though none with the 12 V passthrough, so far as I'm aware.)</p>
