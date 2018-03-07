@@ -39,7 +39,7 @@
 <p>Unless you have a good reason not to, you should start with <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Stretch Lite</a>. The file you'll be downloading is called <code class="code">2017-11-29-raspbian-stretch-lite.zip</code></p>
 <p><b>How do I figure out what name is assigned to the USB-serial adapter when I plug it in?</b></p>
 <p>On Windows 10, it's usually COM3. You can check for sure in the Device Manager control panel under Ports (COM & LPT)</p>
-<p>On macOS, it's called <code class="code">/dev/tty.usbserial-123456</code>, but the numbers at the end change. You can check it by running <code class="code">ls /dev/tty.usb*</code> in Terminal.</p>
+<p>On macOS, it's called <code class="code">/dev/tty.usbserial-123456</code>, but the numbers at the end change. You can check it by running <code class="code">ls /dev</code> in Terminal.</p>
 <p><b>When I open config.txt with Notepad, the lines all run together. How do I fix this?</b></p>
 <p>Use a better text editor, like Sublime Text, Textmate, or Notepad++. You could also try Wordpad.</p>
 <p><b>What network settings do I need for the Tufts wireless network?</b></p>
@@ -48,6 +48,26 @@ network={
     ssid="Tufts_Wireless"
     key_mgmt=NONE
 }
+</pre>
+<p><b>How do I control pins on the Raspberry Pi?</b></p>
+<p>Here's an example Python script that sets a pin high.</p>
+<pre class="code">
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)   # use the BOARD pin-numbering system
+GPIO.setup(16, GPIO.OUT)   # like pinMode(16, OUTPUT)
+GPIO.output(16, GPIO.HIGH) # like digitalWrite(16, HIGH)
+</pre>
+<p>Here's another script that checks the state of a pin.</p>
+<pre class="code">
+import time
+import RPi.GPIO as GPIO
+GPIO.setup(16, GPIO.IN)       # like pinMode(16, INPUT)
+while(1):                     # do this forever
+    if(GPIO.input(16)):       # like digitalRead(16)
+        print("Pin is high.")
+    else:
+        print("Pin is low.")
+    time.sleep(0.5)           # sleep for 0.5 s
 </pre>
 </article>
 <footer><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</footer>
