@@ -5,6 +5,32 @@
 </head>
 <body>
 <h1>Projects</h1>
+<h2>Final project: Build a smart sensor/actuator system.</h2>
+<p>Your team's job is to build a smart sensor that controls a smart actuator over the internet.</p>
+<h3>System requirements</h3>
+<ul>
+	<li>It should consist of at least one sensor and at least one actuator that are not attached to each other.</li>
+	<li>The sensor and actuator should communicate with each other through the internet.</li>
+	<li>The system should do something beautiful, useful, or both, without physical intervention or control signals from you.</li>
+	<li>The system should be enclosed and immune to a <a href="https://www.amazon.com/Articulated-Finger-accessibility-electrical-standards/dp/B0716YYXN2">test finger probe</a>, like that used in UL/IEC 60950-1.</li>
+</ul>
+<h3>Sensor requirements</h3>
+<ul>
+	<li>It should sense something.</li>
+	<li>The sensor hardware should process the raw sensor data such that it can report instantaneous readings, as well as an average value over the 5 seconds, 1 minute, or 10 minutes, via HTTP. (You can change the exact details of this depending on your sensor; the intent is that it should report useful information beyond the raw signal.)</li>
+	<li>It should run without a connection to a laptop. Batteries or a wall plug are okay.</li>
+</ul>
+<h3>Actuator requirements</h3>
+<ul>
+	<li>It should physically move in response to your sensor.</li>
+	<li>Including LEDs, displays, or sound is also good, but not required.</li>
+	<li>It should query your sensor via HTTP.</li>
+	<li>It should report log data about its motion via HTTP at http://its.ip.address/log</li>
+	<li>It should run without a connection to a laptop. Batteries or a wall plug are okay.</li>
+</ul>
+<p>While it is probably wise to have one of you manage the sensor and one of you manage the actuator, you are both responsible for the entire system. Saying, "Well, my side works; it's his side that doesn't work," is the same as saying, "I have failed to get half of the project working." Both sides are your sides.</p>
+<p><b>Due date: Thursday, April 26, 10:30 AM</b> (last class of the semester)</p>
+
 <h2>Project #3: Build a microcontroller-based game</h2>
 <p>Your task, as described in some detail in class, is to build a game with the following characteristics:</p>
 <ul>
