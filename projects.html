@@ -6,13 +6,14 @@
 <body>
 <h1>Projects</h1>
 <h2>Final project: Build a smart sensor/actuator system.</h2>
-<p>Your team's job is to build a smart sensor that controls a smart actuator over the internet.</p>
+<p>Your team's job is to build a smart sensor that controls a smart actuator over the internet. We will work in teams of two, randomly selected.</p>
 <h3>System requirements</h3>
 <ul>
 	<li>It should consist of at least one sensor and at least one actuator that are not attached to each other.</li>
 	<li>The sensor and actuator should communicate with each other through the internet.</li>
-	<li>The system should do something beautiful, useful, or both, without physical intervention or control signals from you.</li>
-	<li>The system should be enclosed and immune to a <a href="https://www.amazon.com/Articulated-Finger-accessibility-electrical-standards/dp/B0716YYXN2">test finger probe</a>, like that used in UL/IEC 60950-1.</li>
+	<li>The system should do something beautiful, useful, or both, without physical intervention or control signals from you, other than through the sensor.</li>
+	<li>The system should be enclosed and immune to a <a href="https://www.amazon.com/Articulated-Finger-accessibility-electrical-standards/dp/B0716YYXN2">test finger probe</a>, like that used in UL/IEC 60950-1. Keep in mind that wireless signals are blocked by metal, so an all-metal enclosure will not work.</li>
+	<li>The circuitry for both sensor and actuator should be contained on a PCB (one for each subsystem). It's okay if you have to hack the PCB a little to make it work in the end.</li>
 </ul>
 <h3>Sensor requirements</h3>
 <ul>
@@ -29,8 +30,24 @@
 	<li>It should run without a connection to a laptop. Batteries or a wall plug are okay.</li>
 </ul>
 <p>While it is probably wise to have one of you manage the sensor and one of you manage the actuator, you are both responsible for the entire system. Saying, "Well, my side works; it's his side that doesn't work," is the same as saying, "I have failed to get half of the project working." Both sides are your sides.</p>
+<p><b>First milestone: Thursday, March 29, 10:30 AM</b>: say what your system will do in 1 minute.</p>
+<p><b>Second milestone: Thursday, April 5, 10:30 AM</b>: release your two PCBs for fabrication. This is also the deadline to tell me what parts you need me to order for you, if any.</p>
 <p><b>Due date: Thursday, April 26, 10:30 AM</b> (last class of the semester)</p>
-
+<p>Note about milestones: Yes, the PCB deadline is unpleasantly early. This is for two reasons: we need 12 business days to get the PCBs back before the end of the semester, but also, in the engineering world, the PCB deadline is <i>always</i> unpleasantly early.</p>
+<h3>Parts recommendations</h3>
+<p>You are free to use whatever parts you have or can acquire for this project. Because you have to talk to the internet, I strongly recommend using at least one of your Raspberry Pi Zero W's in the system. But, if the Pi's operating system is getting in the way or for whatever reason incompatible with your goals, you could also try:</p>
+<ul>
+    <li>A <a href="https://store.particle.io/products/photon">Particle Photon</a>: like an Arduino, but with wifi, and I have a pile of them</li>
+    <li>An <a href="https://www.adafruit.com/product/2491">ESP8266</a>: like a cheap, tiny Arduino, but with wifi, and I have a pile of them too</li>
+    <li>A <a href="https://www.sparkfun.com/products/13907">Sparkfun ESP32 Thing</a>: also like an Arduino with wifi, and 32-bit instead of 8-bit</li>
+    <li>An <a href="https://www.adafruit.com/product/2821">Adafruit Feather Huzzah</a>: yes, another Arduino with wifi</li>
+    <li>An <a href="https://www.adafruit.com/product/3384">Espressif Wrover</a>: another 32-bit Arduino clone with wifi</li>
+</ul>
+<h3>Sensor recommendations</h3>
+<ul>
+    <li>Adafruit sells a <a href="https://www.adafruit.com/category/35">lot of sensors</a>.</li>
+    <li>It is also not crazy to think that you could make your own more advanced sensor. For example, you could use a photodiode to sense a spinning propeller, thereby sensing windspeed.</li>
+</ul>
 <h2>Project #3: Build a microcontroller-based game</h2>
 <p>Your task, as described in some detail in class, is to build a game with the following characteristics:</p>
 <ul>
