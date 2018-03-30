@@ -115,6 +115,34 @@ export FLASK_APP=server.py
 python -m flask run --host=0.0.0.0
 </pre>
 <p>By default, Flask will listen on port 5000, so check <code class="code">http://your.rpi.ip.address:5000</code> to see if it worked.</p>
+<p><b>That's cool, but how do I get Flask to start itself when the Pi boots?</b></p>
+<p>For that, you want to install <a href="http://supervisord.org">Supervisor</a>.</p>
+<pre class="code">
+sudo apt-get install supervisor
+</pre>
+<p>Check that Supervisor is installed properly and running.</p>
+<pre class="code">
+pi@raspberrypi:~$ sudo supervisorctl
+supervisor> status
+supervisor> exit
+</pre>
+<p>Tell supervisor that you want it to run Flask for you by adding something like the lines below to <code class="code">/etc/supervisor/supervisor.conf</code></p>
+<pre class="code">
+[program:flask]
+directory=/home/pi
+environment=FLASK_APP="server.py"
+command=python -m flask run --host=0.0.0.0
+</pre>
+<p>Then, make Supervisor read the config file.</p>
+<pre class="code">
+sudo supervisorctl
+supervisor> update flask
+flask: stopped
+flask: updated process group
+supervisor> status
+flask                            RUNNING   pid 14183, uptime 0:00:09
+</pre>
+<p>If Supervisor can't start Flask for whatever reason, it will write error messages in the log files, which you can find in <code class="code">/var/log/supervisor/</code>. In general, it's probably a better idea to debug your Flask code pretty thoroughly before you start using Supervisor, but if bugs come up, the log files are your best hope. You can also just stop Flask under Supervisor and going back to running Flask from the console yourself.</p>
 </article>
 <footer><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</footer>
 </body>
