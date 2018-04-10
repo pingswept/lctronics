@@ -126,7 +126,7 @@ pi@raspberrypi:~$ sudo supervisorctl
 supervisor> status
 supervisor> exit
 </pre>
-<p>Tell supervisor that you want it to run Flask for you by adding something like the lines below to <code class="code">/etc/supervisor/supervisor.conf</code></p>
+<p>Tell supervisor that you want it to run Flask for you by adding something like the lines below to <code class="code">/etc/supervisor/supervisord.conf</code></p>
 <pre class="code">
 [program:flask]
 directory=/home/pi
