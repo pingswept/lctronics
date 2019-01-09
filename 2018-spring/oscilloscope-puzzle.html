@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/tufte.css"/>
+</head>
+<body>
+<article>
+<h1>The Oscilloscope Puzzle</h1>
+<section>
+<h2>What is the point of this?</h2>
+<p>An oscilloscope is a small plastic box with a bunch of knobs that lets you measure the voltage at the tip of the oscilloscope's probe as a function of time. If you hold the tip of the probe against different parts of an electronic circuit, it shows you the voltage at the point where the probe is touching.</p>
+<p>Here's what an oscilloscope looks like.</p>
+<p>As of February 2017, you can get a crappy USB oscilloscope that plugs into your computer for $50; a decent standalone unit costs somewhere between $500 and $5000, depending on how accurate you want it, how many channels, how big a display, and so forth. There are also fancier, faster oscilloscopes that cost upwards of $10,000.</p>
+<p>Generally speaking, electricity is invisible. As a result, there are certain problems you run into when building electronics that can be solved in minutes with an oscilloscope that you might literally never figure out without one. Unfortunately, learning to debug circuits with an oscilloscope is pretty boring, at least until you are desperate to solve a problem. The goal here is to teach you the basics before your time of desperation arrives.</p>
+<h2>Stuff you need</h2>
+<p>You need a few things to solve the oscilloscope puzzle.</p>
+<ul>
+    <li>An oscilloscope with a probe</li>
+    <li>An Arduino Uno with the puzzle code on it</li>
+    <li>A USB cable to power the Arduino</li>
+</ul>
+<p>If you don't have an Arduino with the puzzle code on it, you can <a href="Puzzle.ino.hex">download the hex file here</a> and copy it onto the Arduino with Avrdude.</p>
+<h2>Your mission</h2>
+<p>When you first plug in your Arduino, the green light will turn on, and the yellow light will start flashing: two fast flashes of 0.5 seconds each, then off for 2 seconds. Your job is to figure out what is happening on the 13 digital pins of the Arduino.</p>
+</section>
+</article>
+</body>
+</html>

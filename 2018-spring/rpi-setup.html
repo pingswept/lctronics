@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/tufte.css"/>
+</head>
+<body>
+<article>
+<h1>Setting up a Raspberry Pi Zero W</h1>
+<h2>Stuff you need</h2>
+<ul>
+    <li>Raspberry Pi Zero W</li>
+    <li>2x20 0.100" pitch male header pins to solder into the R. Pi</li>
+    <li>micro SD card</li>
+    <li>micro USB cable for power</li>
+    <li>USB-serial adapter</li>
+    <li>mini USB cable for USB-serial adapter</li>
+    <li>3 female-female jumper wires</li>
+</ul>
+<h2>Setup checklist</h2>
+<ul style="list-style: none;">
+    <li><input type="checkbox"> Download OS image</li>
+    <li><input type="checkbox"> Burn image to micro SD card with Etcher</li>
+    <li><input type="checkbox"> Edit config.txt on micro SD card to include: <code class="code">enable_uart=1</code></li>
+    <li><input type="checkbox"> Solder in pins</li>
+    <li><input type="checkbox"> Connect RPi to laptop with serial adapter, mini-USB cable, and 3 jumper wires</li>
+    <li><input type="checkbox"> Put micro SD card in slot of Pi</li>
+    <li><input type="checkbox"> Connect mini USB cable between PWR IN on Pi and a USB power adapter</li>
+    <li><input type="checkbox"> Open Putty (Windows) or Terminal (macOS)</li>
+    <li><input type="checkbox"> Start a session at 115200 bps to the Pi</li>
+    <li><input type="checkbox"> Log in with username <code class="code">pi</code> and password <code class="code">raspberry</code></li>
+    <li><input type="checkbox"> To enable wireless, figure out the Pi's MAC address with ifconfig</li>
+    <li><input type="checkbox"> Register MAC address with Tufts IT</li>
+    <li><input type="checkbox"> Wait a few minutes for MAC address permissions to propagate to local wireless access point</li>
+    <li><input type="checkbox"> Add network information to <code class="code">/etc/wpa_supplicant/wpa_supplicant.conf</code></li>
+    <li><input type="checkbox"> Reboot Pi</li>
+</ul>
+<h2>FAQ</h2>
+<p><b>What OS image should I use?</b></p>
+<p>Unless you have a good reason not to, you should start with <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Stretch Lite</a>. The file you'll be downloading is called <code class="code">2017-11-29-raspbian-stretch-lite.zip</code></p>
+<p><b>How do I figure out what name is assigned to the USB-serial adapter when I plug it in?</b></p>
+<p>On Windows 10, it's usually COM3. You can check for sure in the Device Manager control panel under Ports (COM & LPT)</p>
+<p>On macOS, it's called <code class="code">/dev/tty.usbserial-123456</code>, but the numbers at the end change. You can check it by running <code class="code">ls /dev</code> in Terminal.</p>
+<p><b>When I open config.txt with Notepad, the lines all run together. How do I fix this?</b></p>
+<p>Use a better text editor, like Sublime Text, Textmate, or Notepad++. You could also try Wordpad.</p>
+<p><b>What network settings do I need for the Tufts wireless network?</b></p>
+<pre class="code">
+network={
+    ssid="Tufts_Wireless"
+    key_mgmt=NONE
+}
+</pre>
+<p><b>How do I control pins on the Raspberry Pi?</b></p>
+<p>Here's an example Python script that sets a pin high.</p>
+<pre class="code">
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)   # use the BOARD pin-numbering system
+GPIO.setup(16, GPIO.OUT)   # like pinMode(16, OUTPUT)
+GPIO.output(16, GPIO.HIGH) # like digitalWrite(16, HIGH)
+</pre>
+<p>Here's another script that checks the state of a pin.</p>
+<pre class="code">
+import time
+import RPi.GPIO as GPIO
+GPIO.setup(16, GPIO.IN)       # like pinMode(16, INPUT)
+while(1):                     # do this forever
+    if(GPIO.input(16)):       # like digitalRead(16)
+        print("Pin is high.")
+    else:
+        print("Pin is low.")
+    time.sleep(0.5)           # sleep for 0.5 s
+</pre>
+<p><b>Where can I find that code you showed us in class that turned pins on and off through a web browser?</b></p>
+<p>Right here:</p>
+<pre class="code">
+from flask import Flask
+app = Flask(__name__)
+
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+@app.route('/pinon')
+def pin_on():
+    GPIO.setup(16, GPIO.OUT)   # pinMode(16, OUTPUT)
+    GPIO.output(16, GPIO.HIGH) # digitalWrite(16, HIGH)
+    return 'I turned on the pin.'
+
+# Make sure the line below has the correct angle brackets in it.
+@app.route('/digital/write/&lt;pin_name>/&lt;state>')
+def digital_write(pin_name, state):
+    pin = int(pin_name)
+    if state.upper() in ['1', 'ON', 'HIGH']:
+        GPIO.setup(pin, GPIO.OUT)   # pinMode(pin_name, OUTPUT)
+        GPIO.output(pin, GPIO.HIGH) # digitalWrite(pin_name, HIGH)
+        return 'Set pin {0} to HIGH'.format(pin_name)
+    elif state.upper() in ['0', 'OFF', 'LOW']:
+        GPIO.setup(pin, GPIO.OUT)   # pinMode(pin_name, OUTPUT)
+        GPIO.output(pin, GPIO.LOW)  # digitalWrite(pin_name, LOW)
+        return 'Set pin {0} to LOW'.format(pin_name)
+    return 'Something went wrong'
+</pre>
+<p>You also need to install Flask for this to work.</p>
+<p><b>Wait, how do I install Flask?</b></p>
+<p>Switch to the Tufts_Guest wifi network, so your Pi's HTTP requests won't be redirected by Tufts' network. Then, install Flask:
+<pre class="code">
+sudo apt-get install python-pip
+sudo pip install flask
+</pre>
+<p>Then, start the server (assuming your code is in a file called <code class="code">server.py</code>):</p>
+<pre class="code">
+export FLASK_APP=server.py
+python -m flask run --host=0.0.0.0
+</pre>
+<p>By default, Flask will listen on port 5000, so check <code class="code">http://your.rpi.ip.address:5000</code> to see if it worked.</p>
+<p><b>That's cool, but how do I get Flask to start itself when the Pi boots?</b></p>
+<p>For that, you want to install <a href="http://supervisord.org">Supervisor</a>.</p>
+<pre class="code">
+sudo apt-get install supervisor
+</pre>
+<p>Check that Supervisor is installed properly and running.</p>
+<pre class="code">
+pi@raspberrypi:~$ sudo supervisorctl
+supervisor> status
+supervisor> exit
+</pre>
+<p>Tell supervisor that you want it to run Flask for you by adding something like the lines below to <code class="code">/etc/supervisor/supervisord.conf</code></p>
+<pre class="code">
+[program:flask]
+directory=/home/pi
+environment=FLASK_APP="server.py"
+command=python -m flask run --host=0.0.0.0
+</pre>
+<p>Then, make Supervisor read the config file.</p>
+<pre class="code">
+sudo supervisorctl
+supervisor> update flask
+flask: stopped
+flask: updated process group
+supervisor> status
+flask                            RUNNING   pid 14183, uptime 0:00:09
+</pre>
+<p>If Supervisor can't start Flask for whatever reason, it will write error messages in the log files, which you can find in <code class="code">/var/log/supervisor/</code>. In general, it's probably a better idea to debug your Flask code pretty thoroughly before you start using Supervisor, but if bugs come up, the log files are your best hope. You can also just stop Flask under Supervisor and going back to running Flask from the console yourself.</p>
+</article>
+<footer><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</footer>
+</body>
+</html>
