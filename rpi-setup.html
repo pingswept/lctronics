@@ -49,6 +49,18 @@ network={
     key_mgmt=NONE
 }
 </pre>
+<p><b>What about Tufts Secure?</b</p>
+<pre class="code">
+network={
+    ssid="Tufts_Secure"
+    key_mgmt=WPA-EAP
+    pairwise=CCMP
+    eap=PEAP
+    identify="Nolop_IOT"
+    password= YOU PUT THE PASSWORD HERE
+    phase2="auth=MSCHAPV2"
+}
+</pre>
 <p><b>How do I control pins on the Raspberry Pi?</b></p>
 <p>Here's an example Python script that sets a pin high.</p>
 <pre class="code">
