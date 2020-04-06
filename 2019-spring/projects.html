@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/tufte.css"/>
+</head>
+<body>
+<h1>Projects</h1>
+<h2>Project #3: Build a useful, electronic thing</h2>
+<p>Your task is to build something electronic with the following characteristics:</p>
+<ul>
+	<li>It has electronics in it. (A microcontroller is not absolutely required.)</li>
+	<li>It has at least one sensor, i.e something that measures something in the world and makes the device behave differently as a result.</li>
+	<li>It has some kind of output: either a physical actuator or a display. The display can be a remote device, like the screen of your phone. (This might seem easier, but it is not.)</li>
+	<li>It is something you genuinely think will be useful to you (or people you have talked to about the idea) now and 1 year from now.</li>
+	<li>(It does not need to have a custom PCB, but it can if you want. If it has a custom PCB, you must make a working prototype first.)</li>
+</ul>
+<p><b>Milestone 1: Tell me your plan: Thursday, April 4, 12:00 PM (noon (start of class))</b></p>
+<p><b>Milestone 2: Build a prototype: Tuesday, April 16, 12:00 PM (noon (start of class))</b></p>
+<p><b>Final due date: Thursday, April 25, 12:00 PM (noon (start of class))</b></p>
+<p>Bring your useful thing to class on April 25; we will all marvel at our devices' utility. You will find it thrilling.</p>
+<h3>More details for project #4</h3>
+<p>If you need parts (like a sensor or a certain kind of motor), I'm happy to order them for you.</p>
+<h2>Project #3: Build an electromechanical game</h2>
+<p>Your task is to build a game with the following characteristics:</p>
+<ul>
+	<li>It is controlled by a microcontroller like an Arduino or Raspberry Pi. (Choose the Arduino unless you're a Pi zealot.)</li>
+	<li>It has at least one electromechanical element that moves, like a motor or a solenoid.</li>
+	<li>It has some kind of user input, like buttons, knobs, joysticks, sensors, or the like.</li>
+	<li>It is at least sort of fun to play. A blinking LED is not a game.</li>
+	<li>(It does not need to have a custom PCB, but it can if you want. If it has a custom PCB, you must make a working prototype first.)</li>
+</ul>
+<p><b>Milestone 1: Tell me your plan: Tuesday, March 5, 12:00 PM (noon (start of class))</b></p>
+<p><b>Milestone 2: Build a prototype: Thursday, March 14, 12:00 PM (noon (start of class))</b></p>
+<p><b>Final due date: Thursday, March 28, 12:00 PM (noon (start of class))</b></p>
+<p>Bring your playable game to class on March 28; we will all play each other's games. You will enjoy it.</p>
+<h3>More details for project #3</h3>
+<p>If you need parts (like a sensor or a certain kind of motor), I'm happy to order them for you.</p>
+<h2>Project #2: Build an H-bridge motor controller</h2>
+<p>The second project is to build a motor controller with the following characteristics:</p>
+<ul>
+	<li>It consists of a PCB with screw terminals for power and control lines</li>
+	<li>It also accepts power from a 2.1 x 5.5 mm plug from a 12 V wall adapter</li>
+	<li>It has a power LED that lights up when motor power is available</li>
+        <li>It can make a DC motor spin in both directions.</li>
+	<li>The motor current traces can handle 12 V and 5 A continuously without melting.</li>
+	<li>It can be controlled by logic signals from an Arduino.</li>
+</ul>
+<p><b>Due date (for PCB submission): Tuesday, February 19, 12:00 PM (noon (start of class))</b></p>
+<p>When your design is ready, you should <a href="https://oshpark.com/">submit it to the fabricator</a>, OSH Park. It will cost you around $10. After you submit it, forward your order confirmation to brandon.stafford@tufts.edu. That will serve as proof that you submitted your project on time.</p>
+<h3>More details for project #2</h3>
+<p>(I'll add more details here if they're needed.)</p>
+<h2>Project #1: Build a breadboard power supply</h2>
+<p>The first project, as described in some detail in the first class, is to build a power supply with the following characteristics:</p>
+<ul>
+	<li>It consists of a PCB that plugs directly in a breadboard</li>
+	<li>It accepts power from a 2.1 x 5.5 mm plug from a 12 V wall adapter</li>
+	<li>It emits 12 V, 5 V, and 3.3 V (at the same time).</li>
+</ul>
+<p><b>Due date (for PCB submission): Thursday, January 31, 12:00 PM (noon (start of class))</b></p>
+<p>When your design is ready, you should <a href="https://oshpark.com/">submit it to the fabricator</a>, OSH Park. It will cost you around $10. After you submit it, forward your order confirmation to brandon.stafford@tufts.edu. That will serve as proof that you submitted your project on time.</p>
+<h3>More details for project #1</h3>
+<p>First of all, we're not trying to build anything revolutionary in this project. None of you have ever made a PCB before, so the point is to make something fairly simple to get comfortable with the process. (If you search Amazon for "breadboard power supply", you'll see that you can buy various versions of things like this, though none with the 12 V passthrough, so far as I'm aware.)</p>
+<p>The image below shows the rough mechanical constraints for the PCB. You can make a board of whatever dimensions you want, but it needs to plug into the breadboard, hence the pin location dimensions.</p>
+<p><img src="img/breadboard-supply-mechanical-design.png"></p>
+<p>In the first class, I'll hand out all the <a href="components.html">components</a> you'll need to build a prototype of your power supply on a breadboard.  You build the prototype and make sure that you've got the wiring right. Then, make the PCB with the same connections. Finally, when your PCB arrives in the mail, you can reuse the prototype components on your PCB.</p>
+<p>To improve heat dissipation, you will want to use your PCB as a heatsink for the regulators. The TA from 2018, Dominic Guri, has made a <a href="to-220-horizontal-footprint.kicad_mod">KiCAD PCB footprint for the TO-220 package</a> to help with that. You should put it into a folder called `volt-reg.pretty`, or something like that. (The ending `.pretty` is what matters to KiCAD.)</p>
+<p>Put that folder in C:\Program Files\KiCad\share\kicad\modules on Windows or /Library/Application Support/kicad/modules on MacOS. Then, you can add that library to Kicad using Preferences > Footprint Libraries in the footprint association window.</p>
+<p><b>Note that the pins on the two regulators are not in the same order!</b></p>
+<footer><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</footer>
+</body>
+</html>
